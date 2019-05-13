@@ -47,6 +47,17 @@ export default {
    */
   axios: {
     // See https://github.com/nuxt-community/axios-module#options
+    proxy: true
+  },
+  /*
+   ** Axios module configuration
+   */
+  proxy: {
+    // Doc: https://github.com/nuxt-community/proxy-module
+    '/api/': {
+      target: 'http://api.cyworld.co.kr',
+      pathRewrite: { '^/api/': '' }
+    },
   },
   /*
    ** style-resources configuration
