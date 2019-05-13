@@ -12,5 +12,6 @@ export default {}
 .center {
   font-size: $body-font-size;
   @include pos-center;
+  display: flex;
 }
 </style>

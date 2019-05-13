@@ -75,6 +75,16 @@ export default {
     /*
      ** You can extend webpack config here
      */
+
+    // Doc: https://github.com/nuxt/docs/blob/master/en/api/configuration-build.md
+    postcss: {
+      preset: {
+        autoprefixer: {
+          grid: true,
+          browsers: ['last 2 versions', '> 1%', 'ie >=11', 'iOS >= 10', 'Android >= 4.3']
+        }
+      }
+    },
     extend(config, ctx) {
       // Run ESLint on save
       if (ctx.isDev && ctx.isClient) {
