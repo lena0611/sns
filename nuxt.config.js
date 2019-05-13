@@ -31,7 +31,9 @@ export default {
   /*
    ** Plugins to load before mounting the App
    */
-  plugins: [],
+  plugins: [
+    '~/plugins/axios'
+  ],
 
   /*
    ** Nuxt.js modules
@@ -55,8 +57,9 @@ export default {
   proxy: {
     // Doc: https://github.com/nuxt-community/proxy-module
     '/api/': {
-      target: 'http://api.cyworld.co.kr',
-      pathRewrite: { '^/api/': '' }
+      target: 'https://api.cyworld.co.kr',
+      pathRewrite: { '^/api/': '' },
+      secure: false
     },
   },
   /*

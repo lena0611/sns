@@ -1,16 +1,13 @@
 <template>
   <transition name="fade">
-    <div
-      v-if="loading"
-      class="loading-page"
-    >
+    <div v-if="loading" class="loading-page">
       <div class="inner" />
     </div>
   </transition>
 </template>
 
 <script>
-//https://ko.nuxtjs.org/api/configuration-loading/
+// https://ko.nuxtjs.org/api/configuration-loading/
 // 메서드	필수여부	설명
 // start()	Required	경로가 변경될 때 호출되며, 그 시점에 컴포넌트가 보여집니다.
 // finish()	Required	경로가 로드되었을 때(그리고 데이터가 fetch 되었을 때) 호출되며, 그 시점에 컴포넌트를 숨깁니다.

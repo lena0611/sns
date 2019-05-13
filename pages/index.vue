@@ -1,17 +1,12 @@
 <template>
-  <div class="center">
-    index
-  </div>
+  <cy-login />
 </template>
 
 <script>
-export default {}
-</script>
-
-<style lang="scss">
-.center {
-  font-size: $body-font-size;
-  @include pos-center;
-  display: flex;
+import Login from '~/components/login'
+export default {
+  components: {
+    cyLogin: Login
+  }
 }
-</style>
+</script>
