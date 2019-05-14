@@ -11,14 +11,13 @@ export default {
     ],
     link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }]
   },
+  // https://blog.lichter.io/posts/change-the-nuxtjs-server-error-page
+  messages: {
+    error_404: '페이지를 찾을 수 없습니다.\n이용에 불편을 드려 죄송합니다.'
+  },
   loading: '~/components/loading',
-  css: [
-    '~/assets/scss/main.scss'
-  ],
-  plugins: [
-    '~/plugins/axios',
-    '~/plugins/i18n'
-  ],
+  css: ['~/assets/scss/main.scss'],
+  plugins: ['~/plugins/axios', '~/plugins/i18n'],
   router: {
     middleware: 'check-auth'
   },
@@ -42,12 +41,10 @@ export default {
       target: 'https://api.cyworld.co.kr',
       pathRewrite: { '^/api/': '' },
       secure: false
-    },
+    }
   },
   styleResources: {
-    scss: [
-      './assets/scss/*.scss'
-    ]
+    scss: ['./assets/scss/*.scss']
   },
   build: {
     // Doc: https://github.com/nuxt/docs/blob/master/en/api/configuration-build.md
@@ -56,7 +53,13 @@ export default {
       preset: {
         autoprefixer: {
           grid: true,
-          browsers: ['last 2 versions', '> 1%', 'ie >=11', 'iOS >= 10', 'Android >= 4.3']
+          browsers: [
+            'last 2 versions',
+            '> 1%',
+            'ie >=11',
+            'iOS >= 10',
+            'Android >= 4.3'
+          ]
         }
       }
     },

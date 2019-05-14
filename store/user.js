@@ -10,8 +10,11 @@ export const getters = {
     return state.info !== null
   },
   isOwner(state, getters, rootState, rootGetters) {
-    console.log(state.info.identity, rootState.lastHomeId)
-    return state.info.identity === rootState.lastHomeId
+    if (state.info !== null) {
+      return state.info.identity === rootState.lastHomeId
+    } else {
+      return false
+    }
   }
 }
 
@@ -22,10 +25,10 @@ export const mutations = {
   setToken(state, token) {
     state.token = token
   },
-  unsetInfo(state, info) {
+  unsetInfo(state) {
     state.info = null
   },
-  unsetToken(state, token) {
+  unsetToken(state) {
     state.token = null
   }
 }
@@ -53,13 +56,11 @@ export const actions = {
   },
   initAuth({ commit }, { app, req }) {
     let token, userInfo
-
     // sever-side
     if (req) {
       token = app.$cookies.get('jwt')
       userInfo = app.$cookies.get('userInfo')
     }
-
     // client-side
     else {
       token = localStorage.getItem('token')
