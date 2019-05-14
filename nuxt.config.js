@@ -28,7 +28,9 @@ export default {
     // https://github.com/nuxt-community/style-resources-module
     '@nuxtjs/style-resources',
     // https://www.npmjs.com/package/cookie-universal-nuxt
-    'cookie-universal-nuxt'
+    'cookie-universal-nuxt',
+    // https://github.com/nuxt-community/router-module#readme
+    ['@nuxtjs/router', { path: 'router/' }]
   ],
   axios: {
     // See https://github.com/nuxt-community/axios-module#options
