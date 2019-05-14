@@ -1,5 +1,8 @@
-import { messages } from '~/i18n/messages.js'
+import { messages } from '~/i18n/messages'
+import { cookieExpireOption } from '~/utils/cookie'
+
 // export const strict = false
+
 export const state = () => ({
   lang: 'ko',
   messages
@@ -12,18 +15,15 @@ export const mutations = {
 }
 
 export const actions = {
-  nuxtServerInit({ commit }, { req }) {
-    console.log('-----nuxtServerInit------')
+  nuxtServerInit({ commit }, { req, app }) {
     let lang
     if (!req.headers.lang) {
       lang = req.headers['accept-language'].split(',')[0].split('-')[0]
     } else {
-      lang = req.headers.cookie
-        .split(';')
-        .find(c => c.trim().startsWith('lang='))
+      lang = app.$cookies.get('lang')
     }
     lang = lang === 'ko' ? 'ko' : 'en'
-    // Cookie.set('lang', lang, { expires: 7 })
+    app.$cookies.set('lang', lang, cookieExpireOption) // 7days
     commit('setLang', lang)
   }
 }

@@ -1,0 +1,7 @@
+{
+  "vetur.format.defaultFormatter.html": "none",
+  "workbench.iconTheme": "material-icon-theme",
+  "workbench.colorTheme": "Material Theme Darker High Contrast",
+  "git.ignoreLimitWarning": true,
+  "terminal.integrated.shell.windows": "C:\\Program Files\\Git\\bin\\bash.exe"
+}

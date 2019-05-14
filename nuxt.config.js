@@ -2,10 +2,6 @@ import pkg from './package'
 
 export default {
   mode: 'universal',
-
-  /*
-   ** Headers of the page
-   */
   head: {
     title: pkg.name,
     meta: [
@@ -15,46 +11,29 @@ export default {
     ],
     link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }]
   },
-
-  /*
-   ** Customize the progress-bar color
-   */
   loading: '~/components/loading',
-
-  /*
-   ** Global CSS
-   */
   css: [
     '~/assets/scss/main.scss'
   ],
-
-  /*
-   ** Plugins to load before mounting the App
-   */
   plugins: [
     '~/plugins/axios',
     '~/plugins/i18n'
   ],
-
-  /*
-   ** Nuxt.js modules
-   */
+  router: {
+    middleware: 'check-auth'
+  },
   modules: [
     // Doc: https://axios.nuxtjs.org/usage
     '@nuxtjs/axios',
     // https://github.com/nuxt-community/style-resources-module
-    '@nuxtjs/style-resources'
+    '@nuxtjs/style-resources',
+    // https://www.npmjs.com/package/cookie-universal-nuxt
+    'cookie-universal-nuxt'
   ],
-  /*
-   ** Axios module configuration
-   */
   axios: {
     // See https://github.com/nuxt-community/axios-module#options
     proxy: true
   },
-  /*
-   ** Axios module configuration
-   */
   proxy: {
     // Doc: https://github.com/nuxt-community/proxy-module
     '/api/': {
@@ -63,23 +42,12 @@ export default {
       secure: false
     },
   },
-  /*
-   ** style-resources configuration
-   */
   styleResources: {
     scss: [
       './assets/scss/*.scss'
     ]
   },
-
-  /*
-   ** Build configuration
-   */
   build: {
-    /*
-     ** You can extend webpack config here
-     */
-
     // Doc: https://github.com/nuxt/docs/blob/master/en/api/configuration-build.md
     extractCSS: process.env.NODE_ENV === 'production',
     postcss: {
