@@ -1,12 +1,12 @@
 <template>
   <div>
     <button v-if="$store.state.user.info === null" @click="login">
-      로그인
+      {{ $msg('button.login') }}
     </button>
     <template v-else>
       {{ $store.state.user.info.name }}
       <button @click="logout">
-        로그아웃
+        {{ $msg('button.logout') }}
       </button>
     </template>
   </div>

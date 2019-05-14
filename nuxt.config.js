@@ -32,7 +32,8 @@ export default {
    ** Plugins to load before mounting the App
    */
   plugins: [
-    '~/plugins/axios'
+    '~/plugins/axios',
+    '~/plugins/i18n'
   ],
 
   /*
@@ -80,6 +81,7 @@ export default {
      */
 
     // Doc: https://github.com/nuxt/docs/blob/master/en/api/configuration-build.md
+    extractCSS: process.env.NODE_ENV === 'production',
     postcss: {
       preset: {
         autoprefixer: {
