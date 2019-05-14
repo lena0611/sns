@@ -1,6 +1,6 @@
 # sns
 
-> My cool Nuxt.js project
+> SNS Nuxt.js project
 
 ## Build Setup
 
