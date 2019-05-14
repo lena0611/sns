@@ -1,6 +1,6 @@
 <template>
   <div>
-    <button v-if="info === null" @click="login">
+    <button v-if="!isLoggedOn" @click="login">
       {{ $msg('button.login') }}
     </button>
     <template v-else>
@@ -14,12 +14,17 @@
 
 <script>
 import { createNamespacedHelpers } from 'vuex'
-const { mapState: userMapState } = createNamespacedHelpers('user')
+const {
+  mapState: userMapState,
+  mapGetters: userMapGetters
+} = createNamespacedHelpers('user')
+
 export default {
   computed: {
     ...userMapState({
       info: state => state.info
-    })
+    }),
+    ...userMapGetters(['isLoggedOn'])
   },
   methods: {
     login() {

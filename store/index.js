@@ -5,12 +5,20 @@ import { cookieExpireOption } from '~/utils/cookie'
 
 export const state = () => ({
   lang: 'ko',
+  lastHomeId: null,
+  lastPostId: null,
   messages
 })
 
 export const mutations = {
   setLang(state, lang) {
     state.lang = lang
+  },
+  setLastHomeId(state, homeId) {
+    state.lastHomeId = homeId
+  },
+  setLastPostId(state, postId) {
+    state.lastPostId = postId
   }
 }
 

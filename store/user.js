@@ -1,8 +1,19 @@
 import { cookieExpireOption } from '~/utils/cookie'
+
 export const state = () => ({
   token: null,
   info: null
 })
+
+export const getters = {
+  isLoggedOn(state) {
+    return state.info !== null
+  },
+  isOwner(state, getters, rootState, rootGetters) {
+    console.log(state.info.identity, rootState.lastHomeId)
+    return state.info.identity === rootState.lastHomeId
+  }
+}
 
 export const mutations = {
   setInfo(state, info) {
@@ -38,6 +49,7 @@ export const actions = {
     commit('setInfo', loginUser)
     localStorage.setItem('userInfo', JSON.stringify(loginUser))
     this.$cookies.set('userInfo', JSON.stringify(loginUser), cookieExpireOption)
+    return loginUser
   },
   initAuth({ commit }, { app, req }) {
     let token, userInfo

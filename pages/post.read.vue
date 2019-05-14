@@ -3,5 +3,10 @@
 </template>
 
 <script>
-export default {}
+export default {
+  fetch({ params, store }) {
+    store.commit('setLastHomeId', params.homeId)
+    store.commit('setLastPostId', params.postId)
+  }
+}
 </script>
