@@ -1,19 +1,34 @@
 <template>
   <div>
-    {{ isOwner ? '나의홈' : '타인의홈' }}
+    <cy-home-owner-info />
+    <cy-home-post-list />
+    <nuxt-link to="/">인덱스로 가기</nuxt-link>
   </div>
 </template>
 
 <script>
-import { createNamespacedHelpers } from 'vuex'
-const { mapGetters: userMapGetters } = createNamespacedHelpers('user')
+import HomeOwnerInfo from '~/components/home/owner.info'
+import HomePostList from '~/components/home/post.list'
 
 export default {
-  computed: {
-    ...userMapGetters(['isOwner'])
+  components: {
+    cyHomeOwnerInfo: HomeOwnerInfo,
+    cyHomePostList: HomePostList
   },
-  fetch({ params, store }) {
-    store.commit('setLastHomeId', params.homeId)
+  async asyncData({ params, store }) {
+    const homeId = params.homeId
+    try {
+      await store.dispatch('home/getOwnerInfo', { homeId })
+      store.commit('setLastHomeId', homeId)
+    } catch (e) {
+      store.commit('home/setErrorOwnerInfo', {
+        code: e.response.status,
+        type: e.response.headers['error.code'],
+        message: decodeURIComponent(e.response.headers['error.message'])
+          .split('+')
+          .join(' ')
+      })
+    }
   }
 }
 </script>

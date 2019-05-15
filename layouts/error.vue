@@ -7,20 +7,7 @@
 
     <!-- 500 Server error -->
     <div v-else>
-      <!-- 이곳에 500컴퍼넌트 -->
-      Server error
-    </div>
-
-    <div
-      v-if="
-        error.statusCode === 404 &&
-          error.message ===
-            '페이지를 찾을 수 없습니다.\n이용에 불편을 드려 죄송합니다.'
-      "
-      class="error-desc"
-    >
-      네트워크 또는 서비스에 일시적인 오류가 발생하였거나,<br />게시글 변경,
-      삭제 등에 의해 현재 이용이 불가한 상태일 수 있습니다.
+      {{ error.message }}
     </div>
     <div class="btn-center-wrap">
       <nuxt-link to="/" class="btn-goHome">

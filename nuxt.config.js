@@ -1,19 +1,26 @@
-import pkg from './package'
-
 export default {
   mode: 'universal',
   head: {
-    title: pkg.name,
+    title: 'sns',
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { hid: 'description', name: 'description', content: pkg.description }
+      { hid: 'description', name: 'description', content: 'desc' }
     ],
     link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }]
   },
   // https://blog.lichter.io/posts/change-the-nuxtjs-server-error-page
   messages: {
-    error_404: '페이지를 찾을 수 없습니다.\n이용에 불편을 드려 죄송합니다.'
+    loading: 'Loading...',
+    error_404: 'This page could not be found',
+    server_error: 'Server error',
+    nuxtjs: 'Nuxt.js',
+    back_to_home: 'Back to the home page',
+    server_error_details:
+      'An error occurred in the application and your page could not be served. If you are the application owner, check your logs for details.',
+    client_error: 'Error',
+    client_error_details:
+      'An error occurred while rendering the page. Check developer tools console for details.'
   },
   loading: '~/components/loading',
   css: ['~/assets/scss/main.scss'],

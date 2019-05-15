@@ -19,7 +19,7 @@
     "@nuxtjs/style-resources": "^0.1.2",
     "cookie-universal-nuxt": "^2.0.14",
     "cross-env": "^5.2.0",
-    "nuxt": "^2.4.0"
+    "nuxt": "^2.7.1"
   },
   "devDependencies": {
     "@nuxtjs/eslint-config": "^0.0.1",
