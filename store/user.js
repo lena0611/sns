@@ -34,12 +34,12 @@ export const mutations = {
 }
 
 export const actions = {
-  login({ dispatch, commit }) {
-    const res = 'c2be5b67081388523cfc9db350205ddb845a9ce1'
+  async login({ dispatch, commit }) {
+    const res = process.env.token
     commit('setToken', res)
     localStorage.setItem('token', res)
     this.$cookies.set('jwt', res, cookieExpireOption)
-    dispatch('getInfo')
+    await dispatch('getInfo')
   },
   logout({ commit }) {
     commit('unsetToken')

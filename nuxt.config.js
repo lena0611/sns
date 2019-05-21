@@ -1,3 +1,5 @@
+if (process.env.NODE_ENV !== 'production') require('dotenv').config()
+
 export default {
   mode: 'universal',
   head: {
@@ -8,6 +10,10 @@ export default {
       { hid: 'description', name: 'description', content: 'desc' }
     ],
     link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }]
+  },
+  env: {
+    token: process.env.TOKEN,
+    api: process.env.API
   },
   // https://blog.lichter.io/posts/change-the-nuxtjs-server-error-page
   messages: {
@@ -24,11 +30,12 @@ export default {
   },
   loading: '~/components/loading',
   css: ['~/assets/scss/main.scss'],
-  plugins: ['~/plugins/axios', '~/plugins/i18n'],
+  plugins: ['~/plugins/axios', '~/plugins/i18n', '~/plugins/parseMessage'],
   router: {
     middleware: 'check-auth'
   },
   modules: [
+    '@nuxtjs/dotenv',
     // Doc: https://axios.nuxtjs.org/usage
     '@nuxtjs/axios',
     // https://github.com/nuxt-community/style-resources-module
@@ -45,7 +52,7 @@ export default {
   proxy: {
     // Doc: https://github.com/nuxt-community/proxy-module
     '/api/': {
-      target: 'https://api.cyworld.co.kr',
+      target: process.env.api,
       pathRewrite: { '^/api/': '' },
       secure: false
     }

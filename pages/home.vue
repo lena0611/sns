@@ -15,7 +15,7 @@ export default {
     cyHomeOwnerInfo: HomeOwnerInfo,
     cyHomePostList: HomePostList
   },
-  async asyncData({ params, store }) {
+  async fetch({ app, params, store }) {
     const homeId = params.homeId
     try {
       await store.dispatch('home/getOwnerInfo', { homeId })
@@ -24,9 +24,7 @@ export default {
       store.commit('home/setErrorOwnerInfo', {
         code: e.response.status,
         type: e.response.headers['error.code'],
-        message: decodeURIComponent(e.response.headers['error.message'])
-          .split('+')
-          .join(' ')
+        message: app.$decodeErrorMessage(e)
       })
     }
   }

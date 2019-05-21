@@ -1,6 +1,10 @@
 <template>
   <div v-if="!error" class="home-owner-info">
     {{ isOwner ? '나의홈' : '타인의홈' }}
+    <div>
+      {{ homeInfo }}
+    </div>
+    <hr />
   </div>
 </template>
 

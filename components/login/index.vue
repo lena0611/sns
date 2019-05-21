@@ -27,8 +27,12 @@ export default {
     ...userMapGetters(['isLoggedOn'])
   },
   methods: {
-    login() {
-      this.$store.dispatch('user/login')
+    async login() {
+      try {
+        await this.$store.dispatch('user/login')
+      } catch (e) {
+        this.$decodeErrorMessage(e)
+      }
     },
     logout() {
       this.$store.dispatch('user/logout')
