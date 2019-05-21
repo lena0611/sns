@@ -31,7 +31,7 @@ export default {
       try {
         await this.$store.dispatch('user/login')
       } catch (e) {
-        this.$decodeErrorMessage(e)
+        console.error(this.$decodeErrorMessage(e))
       }
     },
     logout() {
@@ -44,7 +44,7 @@ export default {
 <style lang="scss">
 .center {
   font-size: $body-font-size;
-  @include pos-center;
+  @include center;
   display: flex;
 }
 </style>
