@@ -1,6 +1,30 @@
-@mixin pos-center() {
-  position:absolute;
-  left:50%;
-  top:50%;
-  transform:translate3d(-50%,-50%,0);
+@mixin modifier($name) {
+  @at-root {
+    #{&}--#{$name} {
+      @content;
+    }
+  }
+}
+
+@mixin element($name) {
+  @at-root {
+    #{&}__#{$name} {
+      @content;
+    }
+  }
+}
+
+@mixin clearfix {
+  &:after {
+    content: '';
+    display: table;
+    clear: both;
+  }
+}
+
+@mixin center {
+  position: absolute;
+  left: 50%;
+  right: 50%;
+  transform: translate3d(-50%, -50%, 0);
 }

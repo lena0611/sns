@@ -1,0 +1,23 @@
+{
+	"BEM element": {
+		"prefix": "E",
+		"body": [
+			"@include element($1) {$2}"
+		],
+		"description": "Log output to BEM element"
+	},
+	"BEM modifier": {
+		"prefix": "M",
+		"body": [
+			"@include modifier($1) {$2}"
+		],
+		"description": "Log output to BEM modifier"
+	},
+	"BEM modifier cascade": {
+		"prefix": "MC",
+		"body": [
+			"@include modifier-cascade(${1:block_modifier},${2:$element}){$3})"
+		],
+		"description": "Log output to BEM modifier cascade"
+	}
+}
